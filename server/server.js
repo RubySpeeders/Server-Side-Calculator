@@ -9,10 +9,16 @@ let calcFields = [];
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-//Save Data
+//POST from input fields
 app.post('/calculation', (req, res) => {
   console.log(req.body);
   res.sendStatus(200);
+});
+
+//GET results of calculations
+app.get('/calculation', (req, res) => {
+  console.log('GET');
+  res.send(calcFields);
 });
 
 app.use(express.static('public'));
