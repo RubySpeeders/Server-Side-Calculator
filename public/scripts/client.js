@@ -3,6 +3,29 @@ $(document).ready(onReady);
 
 function onReady() {
   //console.log('jq');
+  //event listener
+  $('.js-equals').on('click', clickSubmit);
+  $('.js-add').on('click', chooseOperator);
+  $('.js-subtract').on('click', chooseOperator);
+  $('.js-multiply').on('click', chooseOperator);
+  $('.js-divide').on('click', chooseOperator);
+}
+
+let operator = '';
+
+function chooseOperator() {
+  operator = $(this).prop('name');
+  return operator;
+}
+
+function clickSubmit() {
+  const calcObject = {
+    numOne: $('.js-numOne').val(),
+    operation: operator,
+    numTwo: $('.js-numTwo').val(),
+  };
+  postCalculate(calcObject);
+  console.log(calcObject);
 }
 
 function postCalculate(calcObject) {
@@ -12,7 +35,7 @@ function postCalculate(calcObject) {
     data: calcObject,
   })
     .then((response) => {
-      console.log('butthole');
+      console.log(response);
     })
     .catch((err) => {
       console.log(err);
@@ -33,3 +56,5 @@ function getCalcHistory() {
       alert('yikes');
     });
 }
+
+console.log();
