@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //POST from input fields
+//const obj = { numOne: 0, operation: '', numTwo: 0 };
 app.post('/calculation', (req, res) => {
   console.log(req.body);
   res.sendStatus(200);
@@ -17,7 +18,7 @@ app.post('/calculation', (req, res) => {
 
 //GET results of calculations
 app.get('/calculation', (req, res) => {
-  console.log('GET');
+  //console.log('GET');
   res.send(calcFields);
 });
 
