@@ -5,6 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 let calcFields = [];
+let calcObj = [];
 let answer = 0;
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -14,24 +15,27 @@ app.use(bodyParser.json());
 //const obj = { numOne: 0, operation: '', numTwo: 0 };
 app.post('/calculation', (req, res) => {
   //console.log(req.body);
-  calcFields.push(req.body);
-  console.log(calcFields);
-  for (let i = 0; i < calcFields.length; i++) {
-    const entry = calcFields[i];
+  calcObj = req.body;
+  //console.log(calcObj);
+  for (let i = 0; i < calcObj.length; i++) {
+    const entry = calcObj[i];
     if (entry.operation === 'add') {
       answer += Number(entry.numOne) + Number(entry.numTwo);
-      //console.log(answer);
+      console.log(answer);
+      calcObj.answer = answer;
     } else if (entry.operation === 'subtract') {
       answer += Number(entry.numOne) - Number(entry.numTwo);
-      //console.log(answer);
+      calcObj.answer = answer;
     } else if (entry.operation === 'multiply') {
       answer += Number(entry.numOne) * Number(entry.numTwo);
-      //console.log(answer);
+      calcObj.answer = answer;
     } else if (entry.operation === 'divide') {
       answer += Number(entry.numOne) / Number(entry.numTwo);
-      //console.log(answer);
+      calcObj.answer = answer;
     }
   }
+  calcFields.push(calcObj);
+  console.log(calcFields);
   res.sendStatus(200);
 });
 
