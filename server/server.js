@@ -17,13 +17,21 @@ app.post('/calculation', (req, res) => {
   console.log(calcFields);
   for (let i = 0; i < calcFields.length; i++) {
     const entry = calcFields[i];
+    let answer = 0;
     if (entry.operation === 'add') {
-      //console.log('add that bench');
+      answer += Number(entry.numOne) + Number(entry.numTwo);
+      console.log(answer);
     } else if (entry.operation === 'subtract') {
+      answer += Number(entry.numOne) - Number(entry.numTwo);
+      console.log(answer);
       //console.log('subtract that bench');
     } else if (entry.operation === 'multiply') {
+      answer += Number(entry.numOne) * Number(entry.numTwo);
+      console.log(answer);
       //console.log('multiply that bench');
     } else if (entry.operation === 'divide') {
+      answer += Number(entry.numOne) / Number(entry.numTwo);
+      console.log(answer);
       //console.log('divide that bench');
     }
   }
