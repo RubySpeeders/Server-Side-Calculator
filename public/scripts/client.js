@@ -21,7 +21,7 @@ let operator = '';
 
 function chooseOperator() {
   operator = $(this).prop('name');
-  $(this).addClass('addColour');
+  $(this).toggleClass('addColour');
   return operator;
 }
 
