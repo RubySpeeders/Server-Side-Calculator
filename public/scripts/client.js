@@ -15,6 +15,10 @@ function onReady() {
 function clearFields() {
   $('.js-numOne').val('');
   $('.js-numTwo').val('');
+  $('.js-add').removeClass('addColour');
+  $('.js-subtract').removeClass('addColour');
+  $('.js-multiply').removeClass('addColour');
+  $('.js-divide').removeClass('addColour');
 }
 
 let operator = '';
@@ -42,6 +46,7 @@ function postCalculate(calcObject) {
     data: calcObject,
   })
     .then((response) => {
+      getCalcHistory();
       console.log(response);
     })
     .catch((err) => {
@@ -56,7 +61,7 @@ function getCalcHistory() {
     url: '/calculation',
   })
     .then((response) => {
-      console.log(response);
+      render(response);
     })
     .catch((err) => {
       console.log(err);
@@ -64,4 +69,8 @@ function getCalcHistory() {
     });
 }
 
-console.log();
+function render(response) {
+  console.log('render function happened');
+  $('.js-answerArea').empty();
+  $('.js-answerArea').append('here is a string');
+}
