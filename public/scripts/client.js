@@ -70,7 +70,11 @@ function getCalcHistory() {
 }
 
 function render(response) {
-  console.log('render function happened');
-  $('.js-answerArea').empty();
-  $('.js-answerArea').append('here is a string');
+  console.log(response);
+  $('.js-answerList').empty();
+  for (let i = 0; i < response.length; i++) {
+    $('.js-answerList').append(
+      `<li>${response[i].numOne} and ${response[i].numTwo}</li>`
+    );
+  }
 }
