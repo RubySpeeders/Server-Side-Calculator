@@ -37,6 +37,12 @@ function clickSubmit() {
   };
   postCalculate(calcObject);
   console.log(calcObject);
+  $('.js-add').removeClass('addColour');
+  $('.js-subtract').removeClass('addColour');
+  $('.js-multiply').removeClass('addColour');
+  $('.js-divide').removeClass('addColour');
+  $('.js-numOne').val('');
+  $('.js-numTwo').val('');
 }
 
 function postCalculate(calcObject) {
