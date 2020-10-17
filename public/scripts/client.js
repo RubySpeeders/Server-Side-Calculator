@@ -21,6 +21,7 @@ let operator = '';
 
 function chooseOperator() {
   operator = $(this).prop('name');
+  $(this).addClass('addColour');
   return operator;
 }
 
