@@ -5,7 +5,6 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 let calcHistory = [];
-let calcObj = [];
 let answer = 0;
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -15,13 +14,15 @@ app.use(bodyParser.json());
 //const obj = { numOne: 0, operation: '', numTwo: 0 };
 app.post('/calculation', (req, res) => {
   //console.log(req.body);
-  calcObj = req.body;
-  console.log(calcObj);
-  for (let i = 0; i < calcObj.length; i++) {
-    const entry = calcObj[i];
+  const calcObj = req.body;
+  let arrayCalc = [];
+  arrayCalc.push(calcObj);
+  for (let i = 0; i < arrayCalc.length; i++) {
+    const entry = arrayCalc[i];
+    console.log(entry);
     if (entry.operation === 'add') {
       answer += Number(entry.numOne) + Number(entry.numTwo);
-      console.log(entry.numOne);
+      console.log(answer);
       calcObj.answer = answer;
     } else if (entry.operation === 'subtract') {
       answer += Number(entry.numOne) - Number(entry.numTwo);
@@ -35,7 +36,6 @@ app.post('/calculation', (req, res) => {
     }
   }
   calcHistory.push(calcObj);
-  console.log(calcHistory);
   res.sendStatus(200);
 });
 
