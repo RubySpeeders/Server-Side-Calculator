@@ -5,7 +5,6 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 let calcHistory = [];
-let answer = 0;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -20,17 +19,18 @@ app.post('/calculation', (req, res) => {
   for (let i = 0; i < arrayCalc.length; i++) {
     const entry = arrayCalc[i];
     console.log(entry);
-    if (entry.operation === 'add') {
+    let answer = 0;
+    if (entry.operation === '+') {
       answer += Number(entry.numOne) + Number(entry.numTwo);
       console.log(answer);
       calcObj.answer = answer;
-    } else if (entry.operation === 'subtract') {
+    } else if (entry.operation === '-') {
       answer += Number(entry.numOne) - Number(entry.numTwo);
       calcObj.answer = answer;
-    } else if (entry.operation === 'multiply') {
+    } else if (entry.operation === '*') {
       answer += Number(entry.numOne) * Number(entry.numTwo);
       calcObj.answer = answer;
-    } else if (entry.operation === 'divide') {
+    } else if (entry.operation === '/') {
       answer += Number(entry.numOne) / Number(entry.numTwo);
       calcObj.answer = answer;
     }

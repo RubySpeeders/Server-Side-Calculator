@@ -73,8 +73,9 @@ function render(response) {
   console.log(response);
   $('.js-answerList').empty();
   for (let i = 0; i < response.length; i++) {
+    const field = response[i];
     $('.js-answerList').append(
-      `<li>${response[i].numOne} and ${response[i].numTwo}</li>`
+      `<li>${field.numOne} ${field.operation} ${field.numTwo} = ${field.answer}</li>`
     );
   }
 }
