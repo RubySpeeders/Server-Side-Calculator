@@ -10,6 +10,7 @@ function onReady() {
   $('.js-multiply').on('click', chooseOperator);
   $('.js-divide').on('click', chooseOperator);
   $('.js-clear').on('click', clearFields);
+  getCalcHistory();
 }
 
 function clearFields() {
