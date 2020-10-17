@@ -9,6 +9,12 @@ function onReady() {
   $('.js-subtract').on('click', chooseOperator);
   $('.js-multiply').on('click', chooseOperator);
   $('.js-divide').on('click', chooseOperator);
+  $('.js-clear').on('click', clearFields);
+}
+
+function clearFields() {
+  $('.js-numOne').val('');
+  $('.js-numTwo').val('');
 }
 
 let operator = '';
