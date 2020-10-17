@@ -20,9 +20,7 @@ function clearFields() {
   $('.js-multiply').removeClass('addColour');
   $('.js-divide').removeClass('addColour');
 }
-
 let operator = '';
-
 function chooseOperator() {
   operator = $(this).prop('name');
   $(this).toggleClass('addColour');
@@ -41,8 +39,6 @@ function clickSubmit() {
   $('.js-subtract').removeClass('addColour');
   $('.js-multiply').removeClass('addColour');
   $('.js-divide').removeClass('addColour');
-  $('.js-numOne').val('');
-  $('.js-numTwo').val('');
 }
 
 function postCalculate(calcObject) {
@@ -76,12 +72,13 @@ function getCalcHistory() {
 }
 
 function render(response) {
-  console.log(response);
+  //console.log(response);
   $('.js-answerList').empty();
   for (let i = 0; i < response.length; i++) {
     const field = response[i];
     $('.js-answerList').append(
       `<li>${field.numOne} ${field.operation} ${field.numTwo} = ${field.answer}</li>`
     );
+    $('.js-answer').text(`${field.answer}`);
   }
 }
