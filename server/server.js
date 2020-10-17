@@ -4,7 +4,7 @@ const app = express();
 
 const PORT = process.env.PORT || 5000;
 
-let calcFields = [];
+let calcHistory = [];
 let calcObj = [];
 let answer = 0;
 
@@ -16,12 +16,12 @@ app.use(bodyParser.json());
 app.post('/calculation', (req, res) => {
   //console.log(req.body);
   calcObj = req.body;
-  //console.log(calcObj);
+  console.log(calcObj);
   for (let i = 0; i < calcObj.length; i++) {
     const entry = calcObj[i];
     if (entry.operation === 'add') {
       answer += Number(entry.numOne) + Number(entry.numTwo);
-      console.log(answer);
+      console.log(entry.numOne);
       calcObj.answer = answer;
     } else if (entry.operation === 'subtract') {
       answer += Number(entry.numOne) - Number(entry.numTwo);
@@ -34,15 +34,15 @@ app.post('/calculation', (req, res) => {
       calcObj.answer = answer;
     }
   }
-  calcFields.push(calcObj);
-  console.log(calcFields);
+  calcHistory.push(calcObj);
+  console.log(calcHistory);
   res.sendStatus(200);
 });
 
-//GET results of calculations
+//GET results of calculations and history
 app.get('/calculation', (req, res) => {
   //console.log('GET');
-  res.send(calcFields);
+  res.send(calcHistory);
 });
 
 app.use(express.static('public'));
