@@ -11,6 +11,7 @@ function onReady() {
   $('.js-divide').on('click', chooseOperator);
   $('.js-clear').on('click', clearFields);
   getCalcHistory();
+  //$('.js-answerArea').on('click', '.js-answerList', renderAnswer);
 }
 
 function clearFields() {
@@ -87,3 +88,8 @@ function render(response) {
     $('.js-answer').text(`${field.answer}`);
   }
 }
+
+//function renderAnswer() {
+// $(this).parent().text(render(response));
+//$('.js-answer').text(`${field.answer}`);
+//}
