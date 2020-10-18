@@ -1,7 +1,17 @@
 html {
   background-color: antiquewhite;
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  font-weight: 100;
+}
+
+header {
+  background-color: coral;
+  color: antiquewhite;
+  padding: 10px, 15px;
+  margin-right: 400px;
+  text-align: center;
 }
 
 .addColour {
-  background-color: cornflowerblue;
+  background-color: coral;
 }

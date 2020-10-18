@@ -29,17 +29,21 @@ function chooseOperator() {
 }
 
 function clickSubmit() {
-  const calcObject = {
-    numOne: $('.js-numOne').val(),
-    operation: operator,
-    numTwo: $('.js-numTwo').val(),
-  };
-  postCalculate(calcObject);
-  console.log(calcObject);
-  $('.js-add').removeClass('addColour');
-  $('.js-subtract').removeClass('addColour');
-  $('.js-multiply').removeClass('addColour');
-  $('.js-divide').removeClass('addColour');
+  if ($('.js-numOne').val() === '' || $('.js-numTwo').val() === '') {
+    alert('you need to fill in both fields');
+  } else {
+    const calcObject = {
+      numOne: $('.js-numOne').val(),
+      operation: operator,
+      numTwo: $('.js-numTwo').val(),
+    };
+    postCalculate(calcObject);
+    console.log(calcObject);
+    $('.js-add').removeClass('addColour');
+    $('.js-subtract').removeClass('addColour');
+    $('.js-multiply').removeClass('addColour');
+    $('.js-divide').removeClass('addColour');
+  }
 }
 
 function postCalculate(calcObject) {
